@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Academic Tracker for managing courses, assessments and academic progress.">
 
     <title>Student Academic Tracker</title>
 
@@ -10,9 +11,140 @@
 </head>
 
 <body>
+    <div class="app-shell">
 
-    <h1>Student Academic Tracker</h1>
-    <p>Track assignments, deadlines and academic progress.</p>
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-mark">AT</div>
+
+                <div>
+                    <h2>AcademicTrack</h2>
+                    <p>Student Planner</p>
+                </div>
+            </div>
+
+            <nav class="nav-list" aria-label="Main navigation">
+                <a class="nav-link active" href="#dashboard">Dashboard</a>
+                <a class="nav-link" href="#courses">Courses</a>
+                <a class="nav-link" href="#assessments">Assessments</a>
+                <a class="nav-link" href="#progress">Progress</a>
+            </nav>
+        </aside>
+
+        <div class="app-main">
+
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Student Academic Tracker</p>
+                    <h1>Academic Dashboard</h1>
+                </div>
+
+                <span class="semester-badge">Semester Overview</span>
+            </header>
+
+            <main class="dashboard" id="dashboard">
+
+                <section class="welcome-card">
+                    <div>
+                        <p class="eyebrow">Welcome</p>
+                        <h2>Keep your academic work organised.</h2>
+                        <p>
+                            Track your courses, assessments, grades and overall
+                            academic progress from one dashboard.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="summary-grid" aria-label="Academic summary">
+
+                    <article class="summary-card">
+                        <p class="summary-label">Courses</p>
+                        <p class="summary-value">0</p>
+                        <p class="summary-note">Active courses</p>
+                    </article>
+
+                    <article class="summary-card">
+                        <p class="summary-label">Assessments</p>
+                        <p class="summary-value">0</p>
+                        <p class="summary-note">Total assessments</p>
+                    </article>
+
+                    <article class="summary-card">
+                        <p class="summary-label">Completed</p>
+                        <p class="summary-value">0</p>
+                        <p class="summary-note">Finished assessments</p>
+                    </article>
+
+                    <article class="summary-card">
+                        <p class="summary-label">Average Grade</p>
+                        <p class="summary-value">--</p>
+                        <p class="summary-note">Current average</p>
+                    </article>
+
+                </section>
+
+                <section class="content-grid">
+
+                    <article class="panel" id="courses">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">Courses</p>
+                                <h2>My Courses</h2>
+                            </div>
+                        </div>
+
+                        <div class="empty-state">
+                            <div class="empty-icon">C</div>
+                            <h3>No courses added yet</h3>
+                            <p>
+                                Your enrolled courses will appear here once
+                                course management is added.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="panel" id="assessments">
+                        <div class="panel-header">
+                            <div>
+                                <p class="eyebrow">Assessments</p>
+                                <h2>Upcoming Assessments</h2>
+                            </div>
+                        </div>
+
+                        <div class="empty-state">
+                            <div class="empty-icon">A</div>
+                            <h3>No assessments added yet</h3>
+                            <p>
+                                Upcoming assignments, quizzes and exams
+                                will appear here.
+                            </p>
+                        </div>
+                    </article>
+
+                </section>
+
+                <section class="panel progress-panel" id="progress">
+                    <div class="panel-header">
+                        <div>
+                            <p class="eyebrow">Progress</p>
+                            <h2>Overall Academic Progress</h2>
+                        </div>
+
+                        <strong>0%</strong>
+                    </div>
+
+                    <div class="progress-track">
+                        <div class="progress-fill"></div>
+                    </div>
+
+                    <p class="progress-message">
+                        Complete assessments to build your progress summary.
+                    </p>
+                </section>
+
+            </main>
+        </div>
+    </div>
 
     <script src="js/app.js"></script>
 </body>
