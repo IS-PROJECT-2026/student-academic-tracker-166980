@@ -288,3 +288,115 @@ p {
     color: var(--muted);
     font-size: 13px;
 }
+
+.course-form {
+    display: grid;
+    grid-template-columns: 150px 1fr auto;
+    gap: 12px;
+    align-items: end;
+    margin-bottom: 24px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #f8faff;
+}
+
+.form-group {
+    display: grid;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: white;
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.primary-button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 9px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.primary-button:hover {
+    opacity: 0.9;
+}
+
+.course-list {
+    display: grid;
+    gap: 12px;
+}
+
+.course-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 15px 16px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+}
+
+.course-details {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.course-code {
+    display: grid;
+    place-items: center;
+    min-width: 60px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 9px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.course-info h3 {
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.course-info p {
+    margin-bottom: 0;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.remove-button {
+    padding: 8px 11px;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    background: #fff7f7;
+    color: #b42318;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+}
