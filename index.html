@@ -65,7 +65,7 @@
 
                     <article class="summary-card">
                         <p class="summary-label">Assessments</p>
-                        <p class="summary-value">0</p>
+                        <p class="summary-value" id="assessment-count">0</p>
                         <p class="summary-note">Total assessments</p>
                     </article>
 
@@ -132,17 +132,71 @@
                         <div class="panel-header">
                             <div>
                                 <p class="eyebrow">Assessments</p>
-                                <h2>Upcoming Assessments</h2>
+                                <h2>Assessment Tracker</h2>
                             </div>
                         </div>
 
-                        <div class="empty-state">
-                            <div class="empty-icon">A</div>
-                            <h3>No assessments added yet</h3>
-                            <p>
-                                Upcoming assignments, quizzes and exams
-                                will appear here.
-                            </p>
+                        <form id="assessment-form" class="assessment-form">
+
+                            <div class="form-group">
+                                <label for="assessment-title">Assessment</label>
+                                <input
+                                    type="text"
+                                    id="assessment-title"
+                                    placeholder="e.g. Final Report"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assessment-course">Course</label>
+                                <select id="assessment-course" required>
+                                    <option value="">Select course</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assessment-date">Due Date</label>
+                                <input
+                                    type="date"
+                                    id="assessment-date"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assessment-weight">Weight (%)</label>
+                                <input
+                                    type="number"
+                                    id="assessment-weight"
+                                    min="1"
+                                    max="100"
+                                    placeholder="30"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="assessment-status">Status</label>
+                                <select id="assessment-status">
+                                    <option value="Not Started">Not Started</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="primary-button">
+                                Add Assessment
+                            </button>
+
+                        </form>
+
+                        <div id="assessment-list" class="assessment-list">
+                            <div class="empty-state">
+                                <div class="empty-icon">A</div>
+                                <h3>No assessments added yet</h3>
+                                <p>Add a course and create your first assessment.</p>
+                            </div>
                         </div>
                     </article>
 

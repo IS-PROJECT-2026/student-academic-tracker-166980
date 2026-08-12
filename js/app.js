@@ -6,11 +6,37 @@ const courseNameInput = document.getElementById("course-name");
 const courseList = document.getElementById("course-list");
 const courseCount = document.getElementById("course-count");
 
+const assessmentForm = document.getElementById("assessment-form");
+const assessmentTitleInput = document.getElementById("assessment-title");
+const assessmentCourseInput = document.getElementById("assessment-course");
+const assessmentDateInput = document.getElementById("assessment-date");
+const assessmentWeightInput = document.getElementById("assessment-weight");
+const assessmentStatusInput = document.getElementById("assessment-status");
+const assessmentList = document.getElementById("assessment-list");
+const assessmentCount = document.getElementById("assessment-count");
+
 const courses = [];
+const assessments = [];
+
+function updateCourseOptions() {
+    assessmentCourseInput.innerHTML =
+        '<option value="">Select course</option>';
+
+    courses.forEach((course) => {
+        const option = document.createElement("option");
+
+        option.value = course.code;
+        option.textContent = `${course.code} - ${course.name}`;
+
+        assessmentCourseInput.appendChild(option);
+    });
+}
 
 function renderCourses() {
     courseList.innerHTML = "";
     courseCount.textContent = courses.length;
+
+    updateCourseOptions();
 
     if (courses.length === 0) {
         courseList.innerHTML = `
@@ -20,6 +46,7 @@ function renderCourses() {
                 <p>Add your first course using the form above.</p>
             </div>
         `;
+
         return;
     }
 
@@ -29,7 +56,9 @@ function renderCourses() {
 
         courseItem.innerHTML = `
             <div class="course-details">
-                <div class="course-code">${course.code}</div>
+                <div class="course-code">
+                    ${course.code}
+                </div>
 
                 <div class="course-info">
                     <h3>${course.name}</h3>
@@ -39,7 +68,7 @@ function renderCourses() {
 
             <button
                 type="button"
-                class="remove-button"
+                class="remove-button course-remove"
                 data-course-index="${index}">
                 Remove
             </button>
@@ -52,26 +81,150 @@ function renderCourses() {
 courseForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const course = {
+    const newCourse = {
         code: courseCodeInput.value.trim(),
         name: courseNameInput.value.trim()
     };
 
-    courses.push(course);
+    courses.push(newCourse);
 
     courseForm.reset();
     renderCourses();
 });
 
 courseList.addEventListener("click", function (event) {
-    if (!event.target.matches(".remove-button")) {
+    if (!event.target.matches(".course-remove")) {
         return;
     }
 
-    const index = Number(event.target.dataset.courseIndex);
+    const courseIndex = Number(
+        event.target.dataset.courseIndex
+    );
 
-    courses.splice(index, 1);
+    courses.splice(courseIndex, 1);
+
     renderCourses();
 });
 
+function renderAssessments() {
+    assessmentList.innerHTML = "";
+    assessmentCount.textContent = assessments.length;
+
+    if (assessments.length === 0) {
+        assessmentList.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-icon">A</div>
+                <h3>No assessments added yet</h3>
+                <p>Add a course and create your first assessment.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    assessments.forEach((assessment, index) => {
+        const assessmentItem = document.createElement("div");
+        assessmentItem.className = "assessment-item";
+
+        assessmentItem.innerHTML = `
+            <div class="assessment-top">
+                <div>
+                    <h3>${assessment.title}</h3>
+
+                    <p class="assessment-meta">
+                        ${assessment.course}
+                        · Due ${assessment.date}
+                        · ${assessment.weight}%
+                    </p>
+                </div>
+
+                <span class="status-badge">
+                    ${assessment.status}
+                </span>
+            </div>
+
+            <div class="assessment-actions">
+                <select
+                    class="assessment-status-select"
+                    data-assessment-index="${index}">
+
+                    <option
+                        value="Not Started"
+                        ${assessment.status === "Not Started" ? "selected" : ""}>
+                        Not Started
+                    </option>
+
+                    <option
+                        value="In Progress"
+                        ${assessment.status === "In Progress" ? "selected" : ""}>
+                        In Progress
+                    </option>
+
+                    <option
+                        value="Completed"
+                        ${assessment.status === "Completed" ? "selected" : ""}>
+                        Completed
+                    </option>
+                </select>
+
+                <button
+                    type="button"
+                    class="remove-button assessment-remove"
+                    data-assessment-index="${index}">
+                    Remove
+                </button>
+            </div>
+        `;
+
+        assessmentList.appendChild(assessmentItem);
+    });
+}
+
+assessmentForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const newAssessment = {
+        title: assessmentTitleInput.value.trim(),
+        course: assessmentCourseInput.value,
+        date: assessmentDateInput.value,
+        weight: assessmentWeightInput.value,
+        status: assessmentStatusInput.value
+    };
+
+    assessments.push(newAssessment);
+
+    assessmentForm.reset();
+    renderAssessments();
+});
+
+assessmentList.addEventListener("change", function (event) {
+    if (!event.target.matches(".assessment-status-select")) {
+        return;
+    }
+
+    const assessmentIndex = Number(
+        event.target.dataset.assessmentIndex
+    );
+
+    assessments[assessmentIndex].status =
+        event.target.value;
+
+    renderAssessments();
+});
+
+assessmentList.addEventListener("click", function (event) {
+    if (!event.target.matches(".assessment-remove")) {
+        return;
+    }
+
+    const assessmentIndex = Number(
+        event.target.dataset.assessmentIndex
+    );
+
+    assessments.splice(assessmentIndex, 1);
+
+    renderAssessments();
+});
+
 renderCourses();
+renderAssessments();
