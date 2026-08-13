@@ -21,8 +21,15 @@ const progressPercent = document.getElementById("progress-percent");
 const progressFill = document.getElementById("progress-fill");
 const progressMessage = document.getElementById("progress-message");
 
-const courses = [];
-const assessments = [];
+const courses =
+    JSON.parse(
+        localStorage.getItem("academicTrackerCourses")
+    ) || [];
+
+const assessments =
+    JSON.parse(
+        localStorage.getItem("academicTrackerAssessments")
+    ) || [];
 
 function updateCourseOptions() {
     assessmentCourseInput.innerHTML =
