@@ -31,6 +31,18 @@ const assessments =
         localStorage.getItem("academicTrackerAssessments")
     ) || [];
 
+function saveData() {
+    localStorage.setItem(
+        "academicTrackerCourses",
+        JSON.stringify(courses)
+    );
+
+    localStorage.setItem(
+        "academicTrackerAssessments",
+        JSON.stringify(assessments)
+    );
+}
+
 function updateCourseOptions() {
     assessmentCourseInput.innerHTML =
         '<option value="">Select course</option>';
@@ -101,6 +113,8 @@ courseForm.addEventListener("submit", function (event) {
 
     courses.push(newCourse);
 
+    saveData();
+
     courseForm.reset();
     renderCourses();
 });
@@ -116,6 +130,7 @@ courseList.addEventListener("click", function (event) {
 
     courses.splice(courseIndex, 1);
 
+    saveData();
     renderCourses();
 });
 
@@ -278,6 +293,8 @@ assessmentForm.addEventListener("submit", function (event) {
 
     assessments.push(newAssessment);
 
+    saveData();
+
     assessmentForm.reset();
     renderAssessments();
 });
@@ -294,6 +311,7 @@ assessmentList.addEventListener("change", function (event) {
     assessments[assessmentIndex].status =
         event.target.value;
 
+    saveData();
     renderAssessments();
 });
 
@@ -308,6 +326,7 @@ assessmentList.addEventListener("click", function (event) {
 
     assessments.splice(assessmentIndex, 1);
 
+    saveData();
     renderAssessments();
 });
 
