@@ -71,14 +71,14 @@
 
                     <article class="summary-card">
                         <p class="summary-label">Completed</p>
-                        <p class="summary-value">0</p>
+                        <p class="summary-value" id="completed-count">0</p>
                         <p class="summary-note">Finished assessments</p>
                     </article>
 
                     <article class="summary-card">
                         <p class="summary-label">Average Grade</p>
-                        <p class="summary-value">--</p>
-                        <p class="summary-note">Current average</p>
+                        <p class="summary-value" id="average-grade">--</p>
+                        <p class="summary-note">Current weighted average</p>
                     </article>
 
                 </section>
@@ -177,6 +177,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="assessment-grade">Grade (%)</label>
+                                <input
+                                    type="number"
+                                    id="assessment-grade"
+                                    min="0"
+                                    max="100"
+                                    step="0.1"
+                                    placeholder="e.g. 75"
+                                >
+                            </div>
+
+                            <div class="form-group">
                                 <label for="assessment-status">Status</label>
                                 <select id="assessment-status">
                                     <option value="Not Started">Not Started</option>
@@ -209,14 +221,14 @@
                             <h2>Overall Academic Progress</h2>
                         </div>
 
-                        <strong>0%</strong>
+                        <strong id="progress-percent">0%</strong>
                     </div>
 
                     <div class="progress-track">
-                        <div class="progress-fill"></div>
+                        <div class="progress-fill" id="progress-fill"></div>
                     </div>
 
-                    <p class="progress-message">
+                    <p class="progress-message" id="progress-message">
                         Complete assessments to build your progress summary.
                     </p>
                 </section>
