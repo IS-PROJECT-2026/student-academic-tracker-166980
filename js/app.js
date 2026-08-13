@@ -14,6 +14,12 @@ const assessmentWeightInput = document.getElementById("assessment-weight");
 const assessmentStatusInput = document.getElementById("assessment-status");
 const assessmentList = document.getElementById("assessment-list");
 const assessmentCount = document.getElementById("assessment-count");
+const assessmentGradeInput = document.getElementById("assessment-grade");
+const completedCount = document.getElementById("completed-count");
+const averageGrade = document.getElementById("average-grade");
+const progressPercent = document.getElementById("progress-percent");
+const progressFill = document.getElementById("progress-fill");
+const progressMessage = document.getElementById("progress-message");
 
 const courses = [];
 const assessments = [];
@@ -106,9 +112,74 @@ courseList.addEventListener("click", function (event) {
     renderCourses();
 });
 
+function updateAcademicSummary() {
+    const completedAssessments = assessments.filter(
+        (assessment) => assessment.status === "Completed"
+    );
+
+    completedCount.textContent =
+        completedAssessments.length;
+
+    const gradedAssessments = assessments.filter(
+        (assessment) =>
+            assessment.grade !== "" &&
+            !Number.isNaN(Number(assessment.grade))
+    );
+
+    if (gradedAssessments.length === 0) {
+        averageGrade.textContent = "--";
+    } else {
+        const totalWeight = gradedAssessments.reduce(
+            (total, assessment) =>
+                total + Number(assessment.weight),
+            0
+        );
+
+        const weightedTotal = gradedAssessments.reduce(
+            (total, assessment) =>
+                total +
+                Number(assessment.grade) *
+                Number(assessment.weight),
+            0
+        );
+
+        const calculatedAverage =
+            weightedTotal / totalWeight;
+
+        averageGrade.textContent =
+            `${calculatedAverage.toFixed(1)}%`;
+    }
+
+    const completionRate =
+        assessments.length === 0
+            ? 0
+            : Math.round(
+                (
+                    completedAssessments.length /
+                    assessments.length
+                ) * 100
+            );
+
+    progressPercent.textContent =
+        `${completionRate}%`;
+
+    progressFill.style.width =
+        `${completionRate}%`;
+
+    if (assessments.length === 0) {
+        progressMessage.textContent =
+            "Complete assessments to build your progress summary.";
+    } else {
+        progressMessage.textContent =
+            `${completedAssessments.length} of ${assessments.length} assessments completed.`;
+    }
+}
+
 function renderAssessments() {
     assessmentList.innerHTML = "";
     assessmentCount.textContent = assessments.length;
+
+    updateAcademicSummary();
 
     if (assessments.length === 0) {
         assessmentList.innerHTML = `
@@ -126,6 +197,11 @@ function renderAssessments() {
         const assessmentItem = document.createElement("div");
         assessmentItem.className = "assessment-item";
 
+        const gradeText =
+            assessment.grade === ""
+                ? "Not graded"
+                : `Grade ${assessment.grade}%`;
+
         assessmentItem.innerHTML = `
             <div class="assessment-top">
                 <div>
@@ -134,7 +210,8 @@ function renderAssessments() {
                     <p class="assessment-meta">
                         ${assessment.course}
                         · Due ${assessment.date}
-                        · ${assessment.weight}%
+                        · Weight ${assessment.weight}%
+                        · ${gradeText}
                     </p>
                 </div>
 
@@ -188,6 +265,7 @@ assessmentForm.addEventListener("submit", function (event) {
         course: assessmentCourseInput.value,
         date: assessmentDateInput.value,
         weight: assessmentWeightInput.value,
+        grade: assessmentGradeInput.value,
         status: assessmentStatusInput.value
     };
 
