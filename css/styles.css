@@ -468,3 +468,24 @@ p {
     border-radius: 7px;
     background: white;
 }
+
+.form-message {
+    grid-column: 1 / -1;
+    min-height: 18px;
+    margin: 2px 0 0;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-message.error {
+    color: #b42318;
+}
+
+.form-message.success {
+    color: #16845b;
+}
+
+.input-error {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px #fee2e2 !important;
+}
