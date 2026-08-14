@@ -20,6 +20,8 @@ const averageGrade = document.getElementById("average-grade");
 const progressPercent = document.getElementById("progress-percent");
 const progressFill = document.getElementById("progress-fill");
 const progressMessage = document.getElementById("progress-message");
+const courseMessage = document.getElementById("course-message");
+const assessmentMessage = document.getElementById("assessment-message");
 
 const courses =
     JSON.parse(
@@ -30,6 +32,16 @@ const assessments =
     JSON.parse(
         localStorage.getItem("academicTrackerAssessments")
     ) || [];
+
+function showMessage(element, message, type) {
+    element.textContent = message;
+    element.className = `form-message ${type}`;
+}
+
+function clearMessage(element) {
+    element.textContent = "";
+    element.className = "form-message";
+}
 
 function saveData() {
     localStorage.setItem(
@@ -106,17 +118,50 @@ function renderCourses() {
 courseForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
+    clearMessage(courseMessage);
+
+    const code = courseCodeInput.value.trim();
+    const name = courseNameInput.value.trim();
+
+    if (code === "" || name === "") {
+        showMessage(
+            courseMessage,
+            "Please enter both the course code and course name.",
+            "error"
+        );
+        return;
+    }
+
+    const duplicateCourse = courses.some(
+        (course) =>
+            course.code.toLowerCase() === code.toLowerCase()
+    );
+
+    if (duplicateCourse) {
+        showMessage(
+            courseMessage,
+            "A course with this code already exists.",
+            "error"
+        );
+        return;
+    }
+
     const newCourse = {
-        code: courseCodeInput.value.trim(),
-        name: courseNameInput.value.trim()
+        code: code,
+        name: name
     };
 
     courses.push(newCourse);
 
     saveData();
-
     courseForm.reset();
     renderCourses();
+
+    showMessage(
+        courseMessage,
+        "Course added successfully.",
+        "success"
+    );
 });
 
 courseList.addEventListener("click", function (event) {
@@ -282,21 +327,65 @@ function renderAssessments() {
 assessmentForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
+    clearMessage(assessmentMessage);
+
+    const title = assessmentTitleInput.value.trim();
+    const course = assessmentCourseInput.value;
+    const date = assessmentDateInput.value;
+    const weight = Number(assessmentWeightInput.value);
+    const gradeValue = assessmentGradeInput.value;
+    const status = assessmentStatusInput.value;
+
+    if (title === "" || course === "" || date === "") {
+        showMessage(
+            assessmentMessage,
+            "Please complete all required assessment fields.",
+            "error"
+        );
+        return;
+    }
+
+    if (weight < 1 || weight > 100) {
+        showMessage(
+            assessmentMessage,
+            "Assessment weight must be between 1 and 100.",
+            "error"
+        );
+        return;
+    }
+
+    if (
+        gradeValue !== "" &&
+        (Number(gradeValue) < 0 || Number(gradeValue) > 100)
+    ) {
+        showMessage(
+            assessmentMessage,
+            "Grade must be between 0 and 100.",
+            "error"
+        );
+        return;
+    }
+
     const newAssessment = {
-        title: assessmentTitleInput.value.trim(),
-        course: assessmentCourseInput.value,
-        date: assessmentDateInput.value,
-        weight: assessmentWeightInput.value,
-        grade: assessmentGradeInput.value,
-        status: assessmentStatusInput.value
+        title: title,
+        course: course,
+        date: date,
+        weight: weight,
+        grade: gradeValue,
+        status: status
     };
 
     assessments.push(newAssessment);
 
     saveData();
-
     assessmentForm.reset();
     renderAssessments();
+
+    showMessage(
+        assessmentMessage,
+        "Assessment added successfully.",
+        "success"
+    );
 });
 
 assessmentList.addEventListener("change", function (event) {
