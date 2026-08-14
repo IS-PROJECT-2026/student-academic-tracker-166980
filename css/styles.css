@@ -489,3 +489,115 @@ p {
     border-color: #dc2626 !important;
     box-shadow: 0 0 0 3px #fee2e2 !important;
 }
+
+@media (max-width: 1050px) {
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-form {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .course-form .primary-button {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 760px) {
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 18px;
+    }
+
+    .brand {
+        padding-bottom: 18px;
+    }
+
+    .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 18px;
+    }
+
+    .nav-link {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+
+    .app-main {
+        margin-left: 0;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 22px;
+    }
+
+    .dashboard {
+        padding: 22px;
+    }
+
+    .assessment-form,
+    .course-form {
+        grid-template-columns: 1fr;
+    }
+
+    .course-form .primary-button {
+        grid-column: auto;
+    }
+
+    .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .dashboard {
+        padding: 16px;
+    }
+
+    .welcome-card,
+    .panel,
+    .summary-card {
+        padding: 18px;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .course-item,
+    .assessment-top {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .assessment-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .assessment-status-select,
+    .remove-button,
+    .primary-button {
+        width: 100%;
+    }
+
+    .topbar h1 {
+        font-size: 21px;
+    }
+
+    .semester-badge {
+        display: inline-block;
+    }
+}
