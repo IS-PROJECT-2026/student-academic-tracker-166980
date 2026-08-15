@@ -32,7 +32,7 @@ Paste the URL of the commit in your history that you think best demonstrates cle
 Link to a commit, PR, or issue where something went wrong — a bad commit message you had to fix, a branch you had to delete and recreate, a PR that needed rework, or a deployment that broke. 
 
 - **Link to the evidence:** https://github.com/IS-PROJECT-2026/student-academic-tracker-166980/commit/0e7341b
-- **What happened and how did you recover?** I made a commit with the message `rename css file`, which did not follow the Conventional Commit format required for the project. I recovered by keeping the history transparent and using proper structured commit messages such as `feat`, `fix`, `style`, and `chore` for the rest of the project.
+- **What happened and how did you recover?** I made a commit with the message `rename css file`, which did not follow the Conventional Commit format required for the project. I recovered by keeping the history transparent and using more structured commit messages such as feat, fix, style, and chore in later development work.
 
 ### C. A Pull Request You're Proud Of
 
@@ -82,7 +82,7 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 
 <img width="1631" height="832" alt="4D" src="https://github.com/user-attachments/assets/e7d26596-72bc-4d6e-a462-ad7c49444b77" />
 
-* **Caption:** Pull Request #14 implemented the academic progress summary feature, linked directly to Issue #5 and Milestone 2, and was reviewed before being merged into `main`.
+* **Caption:** Pull Request #14 implemented the academic progress summary feature, linked directly to Issue #5 and Milestone 2, and was successfully merged into `main`.
 ---
 
 ## 5. Merge Conflict Evidence
