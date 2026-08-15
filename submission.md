@@ -2,7 +2,7 @@
 
 ## 1. Student Details
 
-- **Full Name:** Krishna Madhaparia
+- **Full Name:** Krishna Mahendra Madhaparia
 - **GitHub Username:** Madhaparia-Krishna
 - **Email:** krishina.madhaparia@strathmore.edu
 
@@ -24,9 +24,9 @@
 
 Paste the URL of the commit in your history that you think best demonstrates clean conventional commit practice (good type tag, clear subject, meaningful body or footer).
 
-- **Commit URL:** https://github.com/IS-PROJECT-2026/student-academic-tracker-166980/commit/361512b
-- **Why this one?** I chose this commit because it follows the Conventional Commit format with a clear `feat` type and `summary` scope. It also represents one focused change by implementing the academic progress calculations and summary metrics in the tracker.
-
+- **Commit URL:** https://github.com/IS-PROJECT-2026/student-academic-tracker-166980/commit/50741c1
+- **Why this one?** I chose this commit because it follows the Conventional Commit format with a clear type and scope. It also includes a body explaining the change and a footer linking it to Issue #9.
+  
 ### B. A Mistake or Struggle
 
 Link to a commit, PR, or issue where something went wrong — a bad commit message you had to fix, a branch you had to delete and recreate, a PR that needed rework, or a deployment that broke. 
