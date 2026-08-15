@@ -24,7 +24,7 @@
 
 Paste the URL of the commit in your history that you think best demonstrates clean conventional commit practice (good type tag, clear subject, meaningful body or footer).
 
-- **Commit URL:** (https://github.com/IS-PROJECT-2026/student-academic-tracker-166980/commit/361512b)
+- **Commit URL:** https://github.com/IS-PROJECT-2026/student-academic-tracker-166980/commit/361512b
 - **Why this one?** I chose this commit because it follows the Conventional Commit format with a clear `feat` type and `summary` scope. It also represents one focused change by implementing the academic progress calculations and summary metrics in the tracker.
 
 ### B. A Mistake or Struggle
@@ -59,28 +59,28 @@ Demonstrate your workflow mechanics by embedding your screenshots below.
 ### A. Milestones and Issues
 *Provide a screenshot showing your active milestone(s) and the granular tracking issues linked directly to them.*
 
-[PASTE YOUR MILESTONE SCREENSHOT DIRECTLY HERE]
+<img width="1919" height="837" alt="4A" src="https://github.com/user-attachments/assets/f725c1ca-b94f-414f-bf51-77e1b9388bc5" />
 
 * **Caption:** Milestone 3 tracks the final testing, responsive design, conflict resolution, and deployment tasks through linked development issues, showing the project progressing toward completion.
 
 ### B. Project Board
 *Provide a screenshot of your GitHub Project Board with your issues organized dynamically across columns (To Do, In Progress, Done).*
 
-[PASTE YOUR PROJECT BOARD SCREENSHOT DIRECTLY HERE]
+<img width="1342" height="825" alt="4b" src="https://github.com/user-attachments/assets/2a4c4889-a6c3-4daf-a692-eeea68e5a734" />
 
 * **Caption:** The project board tracks issues through To Do, In Progress, and Done, with Issue #9 currently in progress while the completed development tasks remain in Done.
 
 ### C. Branching Architecture
 *Provide a screenshot showing your local or remote Git branch list, highlighting your use of conventional, issue-linked naming patterns (e.g., `feat/`, `fix/`, `style/`).*
 
-[PASTE YOUR BRANCHING SCREENSHOT DIRECTLY HERE]
+<img width="1614" height="828" alt="4c" src="https://github.com/user-attachments/assets/c81369ac-0bcb-4b5e-833f-737b78840183" />
 
 * **Caption:** Development was separated into issue-linked feature, style, and chore branches such as `feat/`, `style/`, and `chore/`, keeping work isolated from `main` until it was reviewed and merged through pull requests.
 
 ### D. Pull Requests & Traceability
 *Provide a screenshot of a completed or open Pull Request (PR) on GitHub that clearly shows it is linked to a related development issue.*
 
-[PASTE YOUR PULL REQUEST SCREENSHOT DIRECTLY HERE]
+<img width="1631" height="832" alt="4D" src="https://github.com/user-attachments/assets/e7d26596-72bc-4d6e-a462-ad7c49444b77" />
 
 * **Caption:** Pull Request #14 implemented the academic progress summary feature, linked directly to Issue #5 and Milestone 2, and was reviewed before being merged into `main`.
 ---
@@ -100,21 +100,21 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 #### Step 1: Generating the Clash
 *Screenshot showing the merge attempt and the conflict warning.*
 
-[PASTE SCREENSHOT OF ATTEMPTED MERGE / TERMINAL WARNING HERE]
+<img width="1359" height="370" alt="5a step 1" src="https://github.com/user-attachments/assets/83269f6e-af9c-447f-a46b-075186b735f7" />
 
 * **Caption:**  I merged `branch-A` into `branch-B` and Git showed a conflict because both branches changed the same line in `index.html`.
 
 #### Step 2: Inside the Code Editor (Conflict Markers)
 *Screenshot showing the raw, unresolved conflict markers (`<<<<<<< HEAD`, `=======`, `>>>>>>>`) in your editor.*
 
-[PASTE SCREENSHOT OF RAW CONFLICT MARKERS HERE]
+<img width="1288" height="502" alt="5a step 2" src="https://github.com/user-attachments/assets/f5a81447-7fd2-4914-9d70-aebb87c1f7f7" />
 
 * **Caption:** Both branches changed the same line in `index.html`, so Git showed the conflict markers. I kept the final text as `Current Semester Overview`.
 
 #### Step 3: Resolution & Clean Merge
 *Screenshot of your clean Git history or completed PR showing the conflict was resolved and merged.*
 
-[PASTE SCREENSHOT OF CLEAN RESOLUTION HERE]
+<img width="1915" height="797" alt="5a step 3" src="https://github.com/user-attachments/assets/1f2db161-939c-434b-9248-0b33a2d5b4d7" />
 
 * **Caption:** The conflict in `index.html` was resolved, committed, and successfully merged into `main` through Pull Request #18.
 
@@ -126,7 +126,7 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 **Why does this cause trigger a conflict?**  Git could not decide which version of the new file should be kept because both branches added the same file differently.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 2 HERE]
+<img width="1400" height="917" alt="5 conflict 2" src="https://github.com/user-attachments/assets/9c456320-93fd-45fd-8a14-22e458cd751f" />
 
 * **Caption:** `conflict-2-a` and `conflict-2-b` both created `js/grade-utils.js` with different grade calculation code, causing an Add/Add conflict.
 
@@ -138,7 +138,7 @@ You must engineer **three merge conflicts**, each triggered by a **different cau
 
 **Why does this cause trigger a conflict?**  Git could not decide whether the CSS block should be deleted or kept with the new changes.
 
-[PASTE SCREENSHOT OF CONFLICT MARKERS FOR CONFLICT 3 HERE]
+<img width="1395" height="923" alt="5 conflict 3" src="https://github.com/user-attachments/assets/af1704d9-c283-46ae-8422-0f6c4c3675ae" />
 
 * **Caption:** `conflict-3-a` deleted the `.demo-status` block while `conflict-3-b` changed the same block in `styles.css`, causing a Delete/Edit conflict.
 
